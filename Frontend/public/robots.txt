@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Disallow unnecessary folders (agar build me ye create hote hain)
+Disallow: /node_modules/
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemap link (important for Google/Bing)
 Sitemap: https://microtechie.online/sitemap.xml
