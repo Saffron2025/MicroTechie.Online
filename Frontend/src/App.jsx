@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar";
 
 import Home from "./Pages/Home";
 import DigitalMarketing from "./Pages/DigitalMarketing";
-import WebDevelopment from "./pages/WebDevelopment";
+import WebDevelopment from "./Pages/WebDevelopment";
 import WebDesign from "./Pages/WebDesign";
 import Innovations from "./Pages/Innovations";
 import About from "./pages/About";
