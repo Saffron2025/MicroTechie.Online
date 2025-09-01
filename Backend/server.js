@@ -37,7 +37,7 @@ app.use(
 
 mongoose
   .connect(process.env.MONGO_URI, { dbName: "microtechie" })
-  .then(() => console.log("✅ MongoDB connected"))
+  .then(() => console.log("✅ MongoDB connect"))
   .catch((err) => console.error("Mongo error:", err.message));
 
 // Routes
