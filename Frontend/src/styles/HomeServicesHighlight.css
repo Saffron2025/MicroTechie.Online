@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+.services-highlight-container {
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.services-highlight-marquee {
+  display: flex;
+  gap: 1rem;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.highlight-item {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0,224,255,0.15);
+}
+
+.highlight-item:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
+}
+
+.highlight-icon {
+  font-size: 1.4rem;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.highlight-text {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .highlight-item {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .highlight-icon {
+    font-size: 1.2rem;
+  }
+}

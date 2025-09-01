@@ -1,0 +1,274 @@
+/* ------------------------------------
+   Premium Navbar (PixelWave Agency)
+   ------------------------------------ */
+
+/* 🔹 Navbar Container */
+.agency-navbar {
+  --bg: rgba(15, 23, 42, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text: #ffffff;
+  --accent1: #00e0ff;
+  --accent2: #00ff88;
+  --accent3: #ff0080;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px; /* ✅ Fixed height */
+  padding: 0 2rem; /* ✅ No top/bottom padding */
+  background: var(--bg);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--glass-border);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.agency-navbar {
+  --navbar-height: 80px; /* desktop height */
+}
+
+@media (max-width: 768px) {
+  .agency-navbar {
+    --navbar-height: 100px; /* mobile height */
+  }
+}
+
+
+/* ✅ Logo Image */
+.logo-img {
+  max-height: 100px; /* ✅ Logo height within navbar */
+  width: auto;
+  object-fit: contain;
+}
+
+/* ✅ Parent container */
+.nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo text (if any) */
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* 🔹 Links Row */
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  align-items: center;
+}
+
+/* Base link */
+.nav-links li a,
+.nav-links li > span {
+  position: relative;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+/* Underline hover for normal links */
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: width 0.3s ease;
+}
+.nav-links li a:hover {
+  color: var(--accent1);
+  transform: translateY(-1px);
+}
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* ✅ Active NavLink */
+.nav-links li a.active {
+  color: var(--accent2);
+}
+.nav-links li a.active::after {
+  width: 100%;
+}
+
+/* 🔥 Services label */
+.nav-links li.dropdown > span {
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-links li.dropdown > span:hover {
+  background: linear-gradient(90deg, var(--accent3), var(--accent1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(0, 224, 255, 0.55);
+  transform: scale(1.05);
+}
+
+/* 🔹 Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: rgba(20, 28, 48, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0;
+  min-width: 220px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Dropdown items */
+.dropdown-menu li { padding: 0; }
+.dropdown-menu li a {
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  padding: 0.65rem 1rem;
+  transition: background 0.25s ease, padding-left 0.25s ease;
+  border-left: 3px solid transparent;
+}
+.dropdown-menu li a:hover {
+  background: rgba(0, 224, 255, 0.08);
+  padding-left: 1.15rem;
+  border-left-color: var(--accent1);
+}
+
+/* 🔹 CTA Button */
+/* ✅ Fix for Get Quote button text alignment */
+.cta-btn {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent1));
+  background-size: 300% 300%;
+  padding: 0.5rem 1.2rem; /* horizontal padding */
+  border-radius: 28px;
+  color: #0f172a !important;
+  font-weight: 700;
+  box-shadow: 0 0 14px rgba(0, 224, 255, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.35s ease;
+
+  /* 🔹 Centering Fix */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;          /* Fixed height */
+  line-height: 1;        /* Remove extra spacing */
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 22px rgba(0, 224, 255, 0.7);
+  background-position: 100% 0;
+}
+
+/* ✅ Ensure all nav items are aligned */
+.nav-links {
+  display: flex;
+  align-items: center; /* This aligns Get Quote and links vertically */
+}
+
+
+/* 🔹 Hamburger (mobile) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.hamburger span {
+  height: 3px;
+  width: 26px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Optional: animate hamburger into X when menu open */
+.nav-links.open ~ .hamburger span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav-links.open ~ .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.nav-links.open ~ .hamburger span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 🔹 Mobile Menu */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 80px; /* match navbar height */
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    flex-direction: column;
+    width: 240px;
+    padding: 1rem;
+    border-radius: 12px 0 0 12px;
+    box-shadow: -4px 4px 18px rgba(0,0,0,0.35);
+  }
+  .nav-links.open {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+  }
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+  }
+
+  .hamburger { display: flex; }
+
+  /* Dropdown in mobile behaves inline */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    background: transparent;
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    border: 0;
+  }
+
+  /* Make Services gradient text readable on dark BG */
+  .nav-links li.dropdown > span {
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ✅ Mobile logo size */
+  .logo-img {
+    max-height: 100px; /* 🔹 Keep same size as desktop */
+  }
+}

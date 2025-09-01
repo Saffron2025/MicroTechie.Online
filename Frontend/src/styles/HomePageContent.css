@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Orbitron:wght@600&display=swap');
+
+/* 🌟 Section Title */
+.section-title {
+  font-size: 2.6rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ade80, #00f0ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleGradient 6s ease infinite;
+}
+
+@keyframes titleGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 1️⃣ WHY CHOOSE US */
+.why-choose-us {
+  padding: 5rem 8%;
+  background: linear-gradient(145deg, #0f172a, #1e3a8a);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Moving glow particles */
+.why-choose-us::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,224,255,0.15), transparent 70%);
+  animation: moveGlow 20s linear infinite;
+}
+
+@keyframes moveGlow {
+  0% { transform: translate(-20%, -20%); }
+  50% { transform: translate(20%, 20%); }
+  100% { transform: translate(-20%, -20%); }
+}
+
+.trust-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.trust-card {
+  background: rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(15px);
+  text-align: center;
+  transition: all 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.trust-card:hover {
+  transform: perspective(800px) rotateX(6deg) rotateY(-6deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,224,255,0.4);
+}
+
+.trust-icon {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 2️⃣ HOW WE WORK */
+.how-we-work {
+  padding: 5rem 8%;
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  color: white;
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 950px;
+  margin: auto;
+}
+
+.process-timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(#ff6ec4, #00e0ff, #4ade80);
+  transform: translateX(-50%);
+  animation: pulseLine 3s infinite alternate;
+}
+
+@keyframes pulseLine {
+  from { box-shadow: 0 0 12px rgba(0,224,255,0.6); }
+  to { box-shadow: 0 0 25px rgba(0,224,255,0.9); }
+}
+
+.process-step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3.5rem;
+  width: 50%;
+}
+
+.process-step.left { justify-content: flex-start; padding-right: 2rem; }
+.process-step.right { justify-content: flex-end; padding-left: 2rem; left: 50%; position: relative; }
+
+.step-icon {
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(135deg, #ff6ec4, #00f0ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 0 20px rgba(0,224,255,0.5);
+  animation: pulseIcon 2s infinite ease-in-out;
+}
+
+@keyframes pulseIcon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.step-content {
+  max-width: 320px;
+  background: rgba(255,255,255,0.07);
+  padding: 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.12);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.process-step:hover .step-content {
+  transform: translateY(-8px);
+}
+
+/* 3️⃣ CTA BANNER */
+.cta-banner {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(270deg, #ff6ec4, #00f0ff, #4ade80);
+  background-size: 300% 300%;
+  animation: shiftBG 8s ease infinite;
+  color: #0f172a;
+}
+
+@keyframes shiftBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.cta-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #ff6ec4, #7873f5, #00f0ff);
+  background-size: 300% 300%;
+  animation: ctaGradient 6s ease infinite;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.5);
+  transition: transform 0.25s ease;
+}
+
+@keyframes ctaGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ripple glow effect */
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(255,110,196,0.6), rgba(0,240,255,0.6));
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cta-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(0, 224, 255, 0.9);
+}
+
+.cta-btn:hover::before {
+  opacity: 1;
+}
+
+/* Click ripple animation */
+.cta-btn:active {
+  transform: scale(0.97);
+}
+

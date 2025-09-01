@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+.service-page {
+  font-family: 'Outfit', sans-serif;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a);
+  color: #f8fafc;
+  min-height: 100vh;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Hero Section ---------- */
+.service-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding: 2.5rem 1rem;
+  border-radius: 20px;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 224, 255, 0.15), transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(255, 0, 128, 0.15), transparent 70%);
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { background-position: 0 0, 100% 100%; }
+  100% { background-position: 50% 50%, 0% 0%; }
+}
+
+.service-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(90deg, #00e0ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.service-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cbd5e1;
+  font-size: 1.1rem;
+}
+
+/* ---------- Features Section ---------- */
+.service-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.service-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: #00e0ff;
+}
+
+.service-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.service-content li {
+  background: rgba(255, 255, 255, 0.05);
+  margin: 0.6rem 0;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.service-content li:nth-child(1) { animation-delay: 0.1s; }
+.service-content li:nth-child(2) { animation-delay: 0.25s; }
+.service-content li:nth-child(3) { animation-delay: 0.4s; }
+.service-content li:nth-child(4) { animation-delay: 0.55s; }
+
+.service-content li:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 224, 255, 0.25);
+}
+
+@keyframes fadeUp {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ---------- Perks Section ---------- */
+.perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 3rem;
+}
+
+.perks div {
+  background: linear-gradient(135deg, rgba(0,224,255,0.15), rgba(255,0,128,0.15));
+  padding: 1.2rem 1.8rem;
+  border-radius: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.05rem;
+  backdrop-filter: blur(6px);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.perks div:nth-child(1) { animation-delay: 0.2s; }
+.perks div:nth-child(2) { animation-delay: 0.35s; }
+.perks div:nth-child(3) { animation-delay: 0.5s; }
+
+.perks svg {
+  color: #00e0ff;
+  font-size: 1.4rem;
+}
+
+/* ---------- CTA Button ---------- */
+.cta-row {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.cta-solid {
+  display: inline-block;
+  padding: 1rem 2.4rem;
+  border-radius: 40px;
+  background: linear-gradient(90deg, #00e0ff, #0077ff);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-solid::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.cta-solid:hover::before {
+  left: 100%;
+}
+
+.cta-solid:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 224, 255, 0.6);
+}
