@@ -7,7 +7,7 @@ import DigitalMarketing from "./Pages/DigitalMarketing";
 import WebDevelopment from "./Pages/WebDevelopment";
 import WebDesign from "./Pages/WebDesign";
 import Innovations from "./Pages/Innovations";
-import About from "./pages/About";
+import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Footer from "./Components/Footer";
 import DigitalMarketingPricing from "./Pages/DigitalMarketingPricing";
