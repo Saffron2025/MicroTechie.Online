@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
+import OneSignal from "react-onesignal";   // ✅ OneSignal import
 
+import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import DigitalMarketing from "./Pages/DigitalMarketing";
 import WebDevelopment from "./Pages/WebDevelopment";
@@ -17,6 +18,17 @@ import OurServices from "./Pages/OurServices";
 import Pricing from "./Pages/Pricing";
 
 function App() {
+  // 🔔 OneSignal init fix
+  useEffect(() => {
+    if (!window.OneSignalInitialized) {
+      OneSignal.init({
+        appId: "2d204cb0-005d-4339-8b65-4b618df6b9ab", // 👈 tumhara App ID
+        notifyButton: { enable: true },
+      });
+      window.OneSignalInitialized = true; // ✅ init ek hi baar hoga
+    }
+  }, []);
+
   return (
     <Router>
       <Navbar />
@@ -32,12 +44,9 @@ function App() {
         <Route path="/WebDesignPricing" element={<WebDesignPricing />} />
         <Route path="/WebDevelopmentPricing" element={<WebDevelopmentPricing />} />
         <Route path="/OurServices" element={<OurServices />} />
-        <Route path='/Pricing' element={<Pricing/>}/>
-  
-
-
+        <Route path="/Pricing" element={<Pricing />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
