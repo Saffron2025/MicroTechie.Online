@@ -3,12 +3,21 @@ importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
 // Custom push handler (fallback in case default fails)
 self.addEventListener('push', function(event) {
   try {
-    const data = event.data ? event.data.json() : {};
+    let data = {};
+    if (event.data) {
+      try {
+        data = event.data.json(); // try JSON parse
+      } catch (e) {
+        // fallback if plain text
+        data = { message: event.data.text() };
+      }
+    }
+
     const title = data.title || "MicroTechie";
     const options = {
       body: data.message || "Test push from Service Worker",
-      icon: "/Micro/MicroTechieLogo-192x192.png",  // apna icon ka path
-      badge: "/Micro/MicroTechieLogo-192x192.png"  // optional
+      icon: "/Micro/MicroTechieLogo-192x192.png",
+      badge: "/Micro/MicroTechieLogo-192x192.png"
     };
 
     event.waitUntil(
