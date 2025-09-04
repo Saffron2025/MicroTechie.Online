@@ -12,6 +12,12 @@
   /* margin-top: 100px; */
 }
 
+.video-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -19,8 +25,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
 }
+
+.hero-video.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 
 /* ✨ Smooth Fade Transition */
 .fade-video {
@@ -108,6 +121,48 @@
   justify-content: center;
   gap: 1rem;
 }
+
+/* General links ke liye */
+a {
+  text-decoration: none;
+}
+
+/* Sirf hero buttons ke liye */
+.hero-buttons a {
+  text-decoration: none !important;
+  color: #fff;  /* ya tumhara button ka text color */
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(90deg, #00e0ff, #007bff);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Secondary button */
+.btn-secondary {
+  border: 2px solid #00e0ff;
+  color: #00e0ff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none !important;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 224, 255, 0.4);
+}
+
 
 /* Animations */
 @keyframes shimmerText {

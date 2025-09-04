@@ -7,17 +7,20 @@ const Hero = () => {
   const imgRef = useRef(null);
   const [videoIndex, setVideoIndex] = useState(0);
 
-  // Tumhare videos list
   const videos = [
     "/Micro/WebDevelopment.mp4",
     "/Micro/WebDesigning.mp4",
     "/Micro/DigitalMarketing.mp4"
   ];
 
-  // Video auto change after each video ends
-  const handleVideoEnd = () => {
-    setVideoIndex((prev) => (prev + 1) % videos.length);
-  };
+  // Auto change video after specific time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVideoIndex((prev) => (prev + 1) % videos.length);
+    }, 10000); // har 10s me change (apne video length ke hisaab se adjust karo)
+
+    return () => clearInterval(interval);
+  }, [videos.length]);
 
   // Scroll reveal effect
   useEffect(() => {
@@ -35,16 +38,21 @@ const Hero = () => {
   return (
     <>
       <section className="hero-section">
-        {/* 🔥 Background Video with Fade Effect */}
-        <video
-          key={videoIndex}                // ✅ key forces re-render
-          className="hero-video fade-video"
-          src={videos[videoIndex]}
-          autoPlay
-          muted
-          playsInline
-          onEnded={handleVideoEnd}        // ✅ next video chalega
-        ></video>
+        {/* 🔥 Multiple videos stacked with fade effect */}
+        <div className="video-wrapper">
+          {videos.map((video, i) => (
+            <video
+              key={i}
+              className={`hero-video ${videoIndex === i ? "active" : ""}`}
+              src={video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          ))}
+        </div>
 
         <div className="overlay"></div>
 

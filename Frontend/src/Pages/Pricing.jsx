@@ -16,10 +16,8 @@ export default function Pricing() {
 
   return (
     <div className="pricing-wrapper">
-      <h1 className="pricing-title">💲 Pricing Plans</h1>
-      <p className="pricing-subtitle">
-        Select a service to view detailed pricing plans.
-      </p>
+      <h1>💲 Pricing Plans</h1>
+      <p>Select a service to view detailed pricing plans.</p>
 
       {/* Dropdown */}
       <select
@@ -33,11 +31,9 @@ export default function Pricing() {
       </select>
 
       {/* Conditional Pricing Display */}
-      <div className="pricing-grid">
-        {activeService === "web-development" && <WebDevelopmentPricing />}
-        {activeService === "web-design" && <WebDesignPricing />}
-        {activeService === "digital-marketing" && <DigitalMarketingPricing />}
-      </div>
+      {activeService === "web-development" && <WebDevelopmentPricing />}
+      {activeService === "web-design" && <WebDesignPricing />}
+      {activeService === "digital-marketing" && <DigitalMarketingPricing />}
     </div>
   );
 }
