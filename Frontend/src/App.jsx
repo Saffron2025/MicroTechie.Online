@@ -40,9 +40,9 @@ function App() {
         <Route path="/innovations" element={<Innovations />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/digital-marketing-pricing" element={<DigitalMarketingPricing />} />
-        <Route path="/web-design-pricing" element={<WebDesignPricing />} />
-        <Route path="/web-development-pricing" element={<WebDevelopmentPricing />} />
+        <Route path="/DigitalMarketingPricing" element={<DigitalMarketingPricing />} />
+        <Route path="/WebDesignPricing" element={<WebDesignPricing />} />
+        <Route path="/WebDevelopmentPricing" element={<WebDevelopmentPricing />} />
         <Route path="/our-services" element={<OurServices />} />
         <Route path="/pricing" element={<Pricing />} />
       </Routes>
