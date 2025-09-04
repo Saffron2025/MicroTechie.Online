@@ -15,6 +15,7 @@ const plans = [
     ],
     cta: "Get Started",
     highlight: false,
+    theme: "light",
   },
   {
     name: "Professional",
@@ -29,6 +30,7 @@ const plans = [
     ],
     cta: "Get Started",
     highlight: true,
+    theme: "dark",
   },
   {
     name: "Premium",
@@ -43,6 +45,7 @@ const plans = [
     ],
     cta: "Get Started",
     highlight: false,
+    theme: "light",
   },
 ];
 
@@ -58,7 +61,7 @@ export default function WebDevelopmentPricing() {
         {plans.map((t, i) => (
           <article
             key={t.name}
-            className={`plan-card ${t.highlight ? "popular" : ""}`}
+            className={`plan-card ${t.theme} ${t.highlight ? "popular" : ""}`}
             style={{ animationDelay: `${i * 120}ms` }}
           >
             {t.highlight && <div className="badge">Most Popular</div>}
