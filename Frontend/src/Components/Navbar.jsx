@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import '../styles/Navbar.css';
+import { HiMenu, HiX } from "react-icons/hi";
+import { FaChevronDown } from "react-icons/fa";
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [user, setUser] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("microUser");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleDropdown = (menu) => {
+    if (activeDropdown === menu) {
+      setActiveDropdown(null);
+    } else {
+      setActiveDropdown(menu);
+    }
+  };
+
   return (
-    <nav className="agency-navbar">
+    <nav className={`agency-navbar ${scrolled ? "scrolled" : ""}`}>
       {/* Logo */}
       <div className="nav-logo">
-        <Link to="/" className="logo-link">
-          <img 
-            src="/Micro/MicroTechieLogo.png"
-            alt="PixelWave Agency Logo" 
-            className="logo-img"
-          />
+        <Link to="/">
+          <img src="/Micro/MicroTechieLogo.png" alt="Logo" className="logo-img" />
         </Link>
       </div>
 
-      {/* Navigation Links */}
+      {/* Links */}
       <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
         <li><NavLink to="/" end>Home</NavLink></li>
 
-        {/* Services Dropdown */}
-        <li className="dropdown">
-          <span>Services ▾</span>
+        {/* Services */}
+        <li className={`dropdown ${activeDropdown === "services" ? "active" : ""}`}>
+          <span onClick={() => toggleDropdown("services")}>
+            Services <FaChevronDown className="chevron" />
+          </span>
           <ul className="dropdown-menu">
             <li><NavLink to="/digital-marketing">Digital Marketing</NavLink></li>
             <li><NavLink to="/web-development">Web Development</NavLink></li>
@@ -40,37 +48,29 @@ const Navbar = () => {
           </ul>
         </li>
 
-        <li className="dropdown">
-  <span>Pricing ▾</span>
-  <ul className="dropdown-menu">
-    <li><NavLink to="/WebDevelopmentPricing">Web Development</NavLink></li>
-    <li><NavLink to="/DigitalMarketingPricing">Digital Marketing</NavLink></li>
-    <li><NavLink to="/WebDesignPricing">Web Designing</NavLink></li>
-  </ul>
-</li>
+        {/* Pricing */}
+        <li className={`dropdown ${activeDropdown === "pricing" ? "active" : ""}`}>
+          <span onClick={() => toggleDropdown("pricing")}>
+            Pricing <FaChevronDown className="chevron" />
+          </span>
+          <ul className="dropdown-menu">
+            <li><NavLink to="/WebDevelopmentPricing">Web Development</NavLink></li>
+            <li><NavLink to="/DigitalMarketingPricing">Digital Marketing</NavLink></li>
+            <li><NavLink to="/WebDesignPricing">Web Designing</NavLink></li>
+          </ul>
+        </li>
 
         <li><NavLink to="/Innovations">Innovations</NavLink></li>
         <li><NavLink to="/about">About</NavLink></li>
-
-
-
-{/* <li><NavLink to="/admin-login">Admin Login</NavLink></li> */}
-
-<li>
-  <NavLink to="/contact" className="cta-btn">
-    Get Quote
-  </NavLink>
-</li>
-
-
+        <li><NavLink to="/contact" className="cta-btn">Get Quote</NavLink></li>
       </ul>
 
-      {/* Mobile Menu Toggle */}
+      {/* Hamburger */}
       <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
-        <span></span>
-        <span></span>
-        <span></span>
+        {menuOpen ? <HiX size={30} /> : <HiMenu size={30} />}
       </div>
+
+      {menuOpen && <div className="menu-overlay" onClick={() => setMenuOpen(false)} />}
     </nav>
   );
 };

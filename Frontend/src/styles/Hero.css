@@ -1,119 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap');
-
-/* 🌌 HERO SECTION */
-
 .hero-section {
+  position: relative;
   display: flex;
   align-items: center;
-    padding-top: calc(var(--navbar-height, 80px) + 4rem);
-
-  justify-content: space-between;
-  padding: calc(5rem + 80px) 8% 5rem; /* ✅ top padding navbar height + hero padding */
-  min-height: 95vh;
-  position: relative;
-  overflow: hidden;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 0 8%;
   color: white;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #050b1e, #0d1b46, #111827);
-}
-
-.pro-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.6rem;
-  font-weight: 600;
-  border-radius: 50px;
-  letter-spacing: 0.5px;
-  position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  /* margin-top: 100px; */
 }
 
-/* Primary button */
-.btn-primary {
-  background: linear-gradient(135deg, #00e0ff, #0077ff);
-  color: #fff;
-  border: none;
-  box-shadow: 0 4px 15px rgba(0, 224, 255, 0.4);
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.btn-primary:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 6px 25px rgba(0, 224, 255, 0.6);
-  background: linear-gradient(135deg, #0077ff, #00e0ff);
+/* ✨ Smooth Fade Transition */
+.fade-video {
+  opacity: 0;
+  animation: fadeInVideo 1s ease forwards;
 }
 
-/* Secondary button */
-.btn-secondary {
-  background: transparent;
-  border: 2px solid #00e0ff;
-  color: #00e0ff;
+@keyframes fadeInVideo {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.btn-secondary:hover {
-  background: #00e0ff;
-  color: #000;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 6px 20px rgba(0, 224, 255, 0.4);
-}
 
-/* Hover ripple effect */
-.pro-btn::after {
-  content: "";
+/* Dark Overlay for readability */
+.overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(0);
-  border-radius: 50%;
-  transition: transform 0.4s ease;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+  z-index: 1;
 }
 
-.pro-btn:hover::after {
-  transform: scale(4);
-  opacity: 0;
+/* Content above video */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  animation: fadeSlide 1.5s ease forwards;
 }
 
-
-/* Floating Gradient Shapes */
-.animated-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: floatShape 12s ease-in-out infinite alternate;
-}
-.shape1 {
-  width: 350px;
-  height: 350px;
-  background: rgba(0, 224, 255, 0.4);
-  top: -50px;
-  left: -80px;
-}
-.shape2 {
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 0, 128, 0.25);
-  bottom: -80px;
-  right: -100px;
-  animation-delay: 3s;
-}
-.shape3 {
-  width: 250px;
-  height: 250px;
-  background: rgba(0, 255, 128, 0.3);
-  top: 50%;
-  left: 50%;
-  animation-delay: 6s;
-}
-
-@keyframes floatShape {
-  0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-50px) translateX(40px); }
-}
-
-/* ✨ Headline */
+/* Title */
 .hero-title {
   font-size: 3.5rem;
   line-height: 1.2;
@@ -122,173 +59,70 @@
   background: linear-gradient(90deg, #00e0ff, #00ff88, #ff00aa, #00e0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 300% 300%;
   animation: shimmerText 5s ease infinite;
 }
 
+/* Subtitle */
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 2rem;
+}
+
+/* Service Badges */
+.service-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.service-badges a {
+  background: linear-gradient(135deg, rgba(0, 224, 255, 0.15), rgba(255, 0, 128, 0.15));
+  padding: 0.7rem 1.6rem;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: 1px solid rgba(0, 224, 255, 0.3);
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  box-shadow: 0 4px 12px rgba(0, 224, 255, 0.25);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-badges a:hover {
+  background: linear-gradient(135deg, #00e0ff, #ff00aa, #00ff88);
+  transform: translateY(-4px) scale(1.06);
+  color: #0f172a;
+  box-shadow: 0 0 25px rgba(0, 224, 255, 0.7);
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Animations */
 @keyframes shimmerText {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: #d1d5db;
-  margin-bottom: 2rem;
-  animation: fadeSlide 1.2s ease forwards;
-}
-
-/* 💎 Badges */
-.service-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-/* Links ka premium style */
-.service-badges a {
-  background: linear-gradient(135deg, rgba(0, 224, 255, 0.15), rgba(0, 255, 136, 0.15));
-  padding: 0.6rem 1.4rem;
-  border-radius: 30px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #fff;
-  border: 1px solid rgba(0, 224, 255, 0.3);
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-  letter-spacing: 0.3px;
-  box-shadow: 0 4px 12px rgba(0, 224, 255, 0.2);
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Gradient animation hover */
-.service-badges a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, #00e0ff, #00ff88, #ff0080);
-  background-size: 300% 300%;
-  opacity: 0;
-  transition: opacity 0.4s ease, background-position 1s ease;
-  z-index: 0;
-}
-
-.service-badges a:hover::before {
-  opacity: 1;
-  background-position: 100% 0;
-}
-
-/* Hover text and glow */
-.service-badges a:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 0 25px rgba(0, 224, 255, 0.7);
-  color: #0f172a;
-}
-
-/* Content above gradient */
-.service-badges a span,
-.service-badges a {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* 🎯 CTA Buttons */
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-}
-.btn-primary {
-  background: linear-gradient(135deg, #00e0ff, #00ff88, #ff00aa);
-  background-size: 300% 300%;
-  animation: gradientMove 6s ease infinite;
-  padding: 0.9rem 2rem;
-  border-radius: 40px;
-  color: #0f172a;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.4s ease;
-}
-.btn-primary:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 30px rgba(0, 224, 255, 0.8);
-}
-.btn-secondary {
-  background: transparent;
-  border: 2px solid #00e0ff;
-  padding: 0.9rem 2rem;
-  border-radius: 40px;
-  color: white;
-  font-weight: 700;
-  transition: all 0.4s ease;
-}
-.btn-secondary:hover {
-  background: #00e0ff;
-  color: #0f172a;
-  transform: scale(1.07);
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* 🖼 Image */
-.hero-image img {
-  width: 460px;
-  max-width: 100%;
-  border-radius: 18px;
-  animation: floatImg 4s ease-in-out infinite, slightTilt 6s ease-in-out infinite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px) scale(0.95);
-  box-shadow: 0 15px 45px rgba(0, 224, 255, 0.25);
-}
-
-/* When visible */
-.hero-image.visible img {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* Hover Glow */
-.hero-image img:hover {
-  transform: scale(1.05) rotateY(5deg);
-  box-shadow: 0 20px 60px rgba(0, 224, 255, 0.4);
-}
-
-/* Float up-down effect */
-@keyframes floatImg {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-/* Slight tilt */
-@keyframes slightTilt {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(2deg); }
-}
-
-/* Fade Slide Animation */
 @keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 📱 Responsive */
+/* Responsive */
 @media (max-width: 900px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 4rem 6%;
-  }
-  .hero-image img {
-    margin-top: 2rem;
-    width: 320px;
-  }
+  .hero-title { font-size: 2.2rem; }
+  .hero-subtitle { font-size: 1rem; }
 }

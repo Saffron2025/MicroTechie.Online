@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import OneSignal from "react-onesignal";   // ✅ OneSignal import
+import { Routes, Route } from "react-router-dom";   // ✅ Router hata diya
+import OneSignal from "react-onesignal";
 
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
@@ -18,36 +18,36 @@ import OurServices from "./Pages/OurServices";
 import Pricing from "./Pages/Pricing";
 
 function App() {
-  // 🔔 OneSignal init fix
+  // 🔔 OneSignal init
   useEffect(() => {
     if (!window.OneSignalInitialized) {
       OneSignal.init({
-        appId: "2d204cb0-005d-4339-8b65-4b618df6b9ab", // 👈 tumhara App ID
+        appId: "2d204cb0-005d-4339-8b65-4b618df6b9ab",
         notifyButton: { enable: true },
       });
-      window.OneSignalInitialized = true; // ✅ init ek hi baar hoga
+      window.OneSignalInitialized = true;
     }
   }, []);
 
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/digital-marketing" element={<DigitalMarketing />} />
         <Route path="/web-development" element={<WebDevelopment />} />
         <Route path="/web-design" element={<WebDesign />} />
-        <Route path="/Innovations" element={<Innovations />} />
+        <Route path="/innovations" element={<Innovations />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/DigitalMarketingPricing" element={<DigitalMarketingPricing />} />
-        <Route path="/WebDesignPricing" element={<WebDesignPricing />} />
-        <Route path="/WebDevelopmentPricing" element={<WebDevelopmentPricing />} />
-        <Route path="/OurServices" element={<OurServices />} />
-        <Route path="/Pricing" element={<Pricing />} />
+        <Route path="/digital-marketing-pricing" element={<DigitalMarketingPricing />} />
+        <Route path="/web-design-pricing" element={<WebDesignPricing />} />
+        <Route path="/web-development-pricing" element={<WebDevelopmentPricing />} />
+        <Route path="/our-services" element={<OurServices />} />
+        <Route path="/pricing" element={<Pricing />} />
       </Routes>
       <Footer />
-    </Router>
+    </>
   );
 }
 
