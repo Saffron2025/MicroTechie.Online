@@ -6,6 +6,7 @@ import HomeServicesHighlight from "./HomeServicesHighlight";
 const Hero = () => {
   const imgRef = useRef(null);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [videoReady, setVideoReady] = useState(false); // 💡 NEW: Track first video readiness
 
   const videos = [
     "/Micro/WebDevelopment.mp4",
@@ -13,12 +14,11 @@ const Hero = () => {
     "/Micro/DigitalMarketing.mp4"
   ];
 
-  // Auto change video after specific time
+  // Auto change video every 10s
   useEffect(() => {
     const interval = setInterval(() => {
       setVideoIndex((prev) => (prev + 1) % videos.length);
-    }, 10000); // har 10s me change (apne video length ke hisaab se adjust karo)
-
+    }, 10000);
     return () => clearInterval(interval);
   }, [videos.length]);
 
@@ -38,18 +38,23 @@ const Hero = () => {
   return (
     <>
       <section className="hero-section">
-        {/* 🔥 Multiple videos stacked with fade effect */}
+        {/* 🔥 Video Background */}
         <div className="video-wrapper">
+          {!videoReady && <div className="video-loader">Loading...</div>} {/* Optional loader */}
+
           {videos.map((video, i) => (
             <video
               key={i}
-              className={`hero-video ${videoIndex === i ? "active" : ""}`}
+              className={`hero-video ${videoIndex === i && videoReady ? "active" : ""}`}
               src={video}
               autoPlay
               muted
               loop
               playsInline
               preload="auto"
+              onCanPlayThrough={() => {
+                if (i === 0 && !videoReady) setVideoReady(true); // only for first video
+              }}
             />
           ))}
         </div>
