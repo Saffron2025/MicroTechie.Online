@@ -29,11 +29,16 @@ app.use((req, _, next) => {
 // CORS (TEMP: wide-open test; kaam ho jaye to restrict kar dena)
 app.use(
   cors({
-    origin: "https://micro-techie-online-anm6.vercel.app",
+    origin: [
+      "https://www.microtechie.online",          // ✅ tera custom domain
+      "https://micro-techie-online-anm6.vercel.app" // ✅ vercel preview domain (optional rakho)
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
+
 
 mongoose
   .connect(process.env.MONGO_URI, { dbName: "microtechie" })
