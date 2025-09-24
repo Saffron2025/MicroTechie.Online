@@ -49,7 +49,7 @@ app.use("/api/contact", contactRouter);
 app.get("/health", (_, res) => res.json({ ok: true }));
 
 app.get("/ping", (req, res) => {
-  res.status(200).send("pong 🟢");
+  res.status(200).json({ ok: true, msg: "pong 🟢" });
 });
 
 const port = process.env.PORT || 5000;
