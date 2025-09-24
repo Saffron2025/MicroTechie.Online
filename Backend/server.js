@@ -48,6 +48,10 @@ app.use("/api/contact", contactRouter);
 // Health
 app.get("/health", (_, res) => res.json({ ok: true }));
 
+app.get("/ping", (req, res) => {
+  res.status(200).send("pong 🟢");
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () =>
   console.log(`🚀 Server running at http://localhost:${port}`)
