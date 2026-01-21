@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { Routes, Route } from "react-router-dom";   // ✅ Router hata diya
+import { Routes, Route } from "react-router-dom";
 import OneSignal from "react-onesignal";
 
-import Navbar from "./Components/Navbar";
+import MainLayout from "./Layouts/MainLayout";
+
 import Home from "./Pages/Home";
 import DigitalMarketing from "./Pages/DigitalMarketing";
 import WebDevelopment from "./Pages/WebDevelopment";
@@ -10,15 +11,14 @@ import WebDesign from "./Pages/WebDesign";
 import Innovations from "./Pages/Innovations";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Footer from "./Components/Footer";
 import DigitalMarketingPricing from "./Pages/DigitalMarketingPricing";
 import WebDesignPricing from "./Pages/WebDesignPricing";
 import WebDevelopmentPricing from "./Pages/WebDevelopmentPricing";
 import OurServices from "./Pages/OurServices";
 import Pricing from "./Pages/Pricing";
+import WebOffer from "./Pages/WebOffer";
 
 function App() {
-  // 🔔 OneSignal init
   useEffect(() => {
     if (!window.OneSignalInitialized) {
       OneSignal.init({
@@ -30,24 +30,34 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/digital-marketing" element={<DigitalMarketing />} />
-        <Route path="/web-development" element={<WebDevelopment />} />
-        <Route path="/web-design" element={<WebDesign />} />
-        <Route path="/innovations" element={<Innovations />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/DigitalMarketingPricing" element={<DigitalMarketingPricing />} />
-        <Route path="/WebDesignPricing" element={<WebDesignPricing />} />
-        <Route path="/WebDevelopmentPricing" element={<WebDevelopmentPricing />} />
-        <Route path="/our-services" element={<OurServices />} />
-        <Route path="/pricing" element={<Pricing />} />
-      </Routes>
-      <Footer />
-    </>
+    <Routes>
+
+      {/* 🔹 NORMAL WEBSITE PAGES */}
+      <Route
+        path="/"
+        element={
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        }
+      />
+
+      <Route path="/digital-marketing" element={<MainLayout><DigitalMarketing /></MainLayout>} />
+      <Route path="/web-development" element={<MainLayout><WebDevelopment /></MainLayout>} />
+      <Route path="/web-design" element={<MainLayout><WebDesign /></MainLayout>} />
+      <Route path="/innovations" element={<MainLayout><Innovations /></MainLayout>} />
+      <Route path="/about" element={<MainLayout><About /></MainLayout>} />
+      <Route path="/contact" element={<MainLayout><Contact /></MainLayout>} />
+      <Route path="/DigitalMarketingPricing" element={<MainLayout><DigitalMarketingPricing /></MainLayout>} />
+      <Route path="/WebDesignPricing" element={<MainLayout><WebDesignPricing /></MainLayout>} />
+      <Route path="/WebDevelopmentPricing" element={<MainLayout><WebDevelopmentPricing /></MainLayout>} />
+      <Route path="/our-services" element={<MainLayout><OurServices /></MainLayout>} />
+      <Route path="/pricing" element={<MainLayout><Pricing /></MainLayout>} />
+
+      {/* 🔥 LANDING PAGE (NO NAVBAR / NO FOOTER) */}
+      <Route path="/web-design-offer" element={<WebOffer />} />
+
+    </Routes>
   );
 }
 
